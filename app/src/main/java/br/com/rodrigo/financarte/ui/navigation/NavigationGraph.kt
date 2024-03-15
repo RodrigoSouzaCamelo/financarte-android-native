@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import br.com.rodrigo.financarte.ui.pages.HomePage
+import br.com.rodrigo.financarte.ui.pages.home.HomePage
 import br.com.rodrigo.financarte.ui.pages.OverviewPage
 import br.com.rodrigo.financarte.ui.pages.TransactionsPage
 
