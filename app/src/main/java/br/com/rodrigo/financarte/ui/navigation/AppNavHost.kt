@@ -14,3 +14,13 @@ fun AppNavHost(
 ) {
     NavigationGraph(navController = navController, paddingValues = paddingValues)
 }
+
+fun NavHostController.navigateTo(route: String) = this.navigate(route) {
+    graph.startDestinationRoute?.let { screenRoute ->
+        popUpTo(screenRoute) {
+            saveState = true
+        }
+    }
+    launchSingleTop = true
+    restoreState = true
+}

@@ -6,7 +6,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
-import br.com.rodrigo.financarte.ui.components.BottomNavigation
+import br.com.rodrigo.financarte.ui.components.bottonnavigation.BottomNavigation
 import br.com.rodrigo.financarte.ui.components.DrawerNavigation
 import br.com.rodrigo.financarte.ui.components.TopBar
 

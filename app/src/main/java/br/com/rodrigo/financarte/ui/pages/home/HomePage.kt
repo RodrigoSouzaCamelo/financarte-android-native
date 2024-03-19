@@ -75,7 +75,7 @@ fun AccountBalanceCard() {
     Card(
         shape = RoundedCornerShape(8.dp),
         modifier = Modifier
-            .height(165.dp)
+            .height(180.dp)
             .padding(horizontal = 16.dp)
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
