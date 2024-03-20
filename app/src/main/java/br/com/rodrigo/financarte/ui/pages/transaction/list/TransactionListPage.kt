@@ -1,16 +1,16 @@
-package br.com.rodrigo.financarte.ui.pages
+package br.com.rodrigo.financarte.ui.pages.transaction.list
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun TransactionsPage(){
+fun TransactionListPage(){
     Text(text = "Transactions Page")
 }
 
 @Preview
 @Composable
-fun TransactionsPagePreview() {
-    TransactionsPage()
+fun TransactionListPagePreview() {
+    TransactionListPage()
 }

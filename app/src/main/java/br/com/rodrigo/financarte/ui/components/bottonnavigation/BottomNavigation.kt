@@ -25,7 +25,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import br.com.rodrigo.financarte.R
-import br.com.rodrigo.financarte.ui.navigation.BottomNavItem
+import br.com.rodrigo.financarte.ui.navigation.AppDestination
 import br.com.rodrigo.financarte.ui.navigation.navigateTo
 import br.com.rodrigo.financarte.ui.theme.FinancarteTheme
 
@@ -42,7 +42,7 @@ fun BottomNavigation(navController: NavHostController) {
         val currentRoute = navBackStackEntry?.destination?.route
 
         BottomNavigationItem(
-            title = BottomNavItem.Home.title,
+            title = AppDestination.Home.title,
             icon = {
                 Icon(
                     Icons.Default.Home,
@@ -50,11 +50,11 @@ fun BottomNavigation(navController: NavHostController) {
                     modifier = Modifier.size(25.dp)
                 )
             },
-            onClick = { navController.navigateTo(BottomNavItem.Home.screenRoute) }
+            onClick = { navController.navigateTo(AppDestination.Home.screenRoute) }
         )
 
         BottomNavigationItem(
-            title = BottomNavItem.Home.title,
+            title = AppDestination.Home.title,
             icon = {
                 Icon(
                     painterResource(id = R.drawable.ic_insert_chart),
@@ -62,16 +62,16 @@ fun BottomNavigation(navController: NavHostController) {
                     modifier = Modifier.size(25.dp)
                 )
             },
-            onClick = { navController.navigateTo(BottomNavItem.Overview.screenRoute) }
+            onClick = { navController.navigateTo(AppDestination.Overview.screenRoute) }
         )
 
         BottomNavigationActionItem(
             icon = Icons.Default.Add,
-            onClick = {}
+            onClick = { navController.navigateTo(AppDestination.TransactionAdd.screenRoute) }
         )
 
         BottomNavigationItem(
-            title = BottomNavItem.Home.title,
+            title = AppDestination.Home.title,
             icon = {
                 Icon(
                     Icons.AutoMirrored.Filled.List,
@@ -79,11 +79,11 @@ fun BottomNavigation(navController: NavHostController) {
                     modifier = Modifier.size(25.dp)
                 )
             },
-            onClick = { navController.navigateTo(BottomNavItem.Transactions.screenRoute) }
+            onClick = { navController.navigateTo(AppDestination.TransactionList.screenRoute) }
         )
 
         BottomNavigationItem(
-            title = BottomNavItem.Home.title,
+            title = AppDestination.Home.title,
             icon = {
                 Icon(
                     Icons.Default.MoreVert,
@@ -91,7 +91,7 @@ fun BottomNavigation(navController: NavHostController) {
                     modifier = Modifier.size(25.dp)
                 )
             },
-            onClick = { navController.navigateTo(BottomNavItem.More.screenRoute) }
+            onClick = { navController.navigateTo(AppDestination.More.screenRoute) }
         )
     }
 }
