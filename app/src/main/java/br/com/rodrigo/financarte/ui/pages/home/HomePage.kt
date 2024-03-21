@@ -78,7 +78,9 @@ fun AccountBalanceCard() {
         Row(modifier = Modifier.fillMaxWidth()) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(end = 25.dp)
             ) {
                 Text(
                     text = "Saldo em conta",
@@ -136,7 +138,7 @@ fun AccountBalanceCard() {
 
                     Row {
                         Text(
-                            text = "R$ 500",
+                            text = "R$ 1000",
                             fontSize = 24.sp,
                             color = Color(0xFF4CAF50)
                         )

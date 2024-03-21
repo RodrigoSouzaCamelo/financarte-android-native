@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import br.com.rodrigo.financarte.ui.pages.OverviewPage
+import br.com.rodrigo.financarte.ui.pages.overview.OverviewPage
 
 @Composable
 fun AppNavHost(
@@ -20,9 +20,8 @@ fun AppNavHost(
         modifier = Modifier.padding(paddingValues = paddingValues)
     ) {
         homeGraph(navController)
-        composable(AppDestination.Overview.screenRoute) {
-            OverviewPage()
-        }
+        moreGraph(navController)
+        overviewGraph(navController)
         transactionGraph(navController)
     }
 }

@@ -4,10 +4,10 @@ sealed class AppDestination(
     val title: String,
     val screenRoute: String
 ) {
-    object Home : AppDestination(title = "Home", screenRoute = "Home")
-    object Overview : AppDestination(title = "Overview", screenRoute = "Overview")
-    object TransactionList : AppDestination(title = "Transação", screenRoute = "Transaction")
-    object TransactionAdd : AppDestination(title = "Adicionar Transação", screenRoute = "TransactionAdd")
-    object More : AppDestination(title = "Mais", screenRoute = "More")
+    data object Home : AppDestination(title = "Home", screenRoute = "Home")
+    data object More : AppDestination(title = "Mais", screenRoute = "More")
+    data object Overview : AppDestination(title = "Overview", screenRoute = "Overview")
+    data object TransactionList : AppDestination(title = "Transação", screenRoute = "Transaction")
+    data object TransactionAdd : AppDestination(title = "Adicionar Transação", screenRoute = "TransactionAdd")
 
 }
