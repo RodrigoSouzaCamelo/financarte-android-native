@@ -6,6 +6,10 @@ data class Transaction(
     val description: String?,
     val amount: Double,
     val transactionDate: String,
-    val category: String?,
-    val paymentMethod: String?
+    val category: String?
 )
+
+enum class TransactionType {
+    Receita,
+    Despesa
+}
