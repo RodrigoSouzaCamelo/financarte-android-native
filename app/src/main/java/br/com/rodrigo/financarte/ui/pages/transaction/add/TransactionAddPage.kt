@@ -25,6 +25,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -56,10 +57,18 @@ fun TransactionAddPage(navHostController: NavHostController) {
             modifier = Modifier.fillMaxWidth()
         ) {
             IconButton(onClick = { navHostController.popBackStack() }) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    tint = MaterialTheme.colorScheme.secondaryContainer,
+                    contentDescription = null
+                )
             }
 
-            Text(text = "Nova transação", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                text = "Nova transação",
+                color = MaterialTheme.colorScheme.secondaryContainer,
+                style = MaterialTheme.typography.bodyLarge
+            )
         }
 
         Row(
@@ -68,8 +77,17 @@ fun TransactionAddPage(navHostController: NavHostController) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Column(modifier = Modifier.padding(top = 15.dp, start = 15.dp)) {
-                Text(text = "Valor da transação", style = MaterialTheme.typography.bodySmall)
-                Text(text = "R$ 0,00", style = MaterialTheme.typography.displaySmall)
+                Text(
+                    text = "Valor da transação",
+                    color = MaterialTheme.colorScheme.secondaryContainer,
+                    style = MaterialTheme.typography.bodySmall
+                )
+
+                Text(
+                    text = "R$ 0,00",
+                    color = MaterialTheme.colorScheme.secondaryContainer,
+                    style = MaterialTheme.typography.displaySmall
+                )
             }
         }
 
@@ -93,24 +111,37 @@ fun TransactionAddPage(navHostController: NavHostController) {
                     modifier = Modifier
                         .height(60.dp)
                 ) {
+                    val text: MutableState<String?> = remember { mutableStateOf(null) }
+
+                    var textStyle = MaterialTheme.typography.bodyLarge.copy(
+                        color = if(text.value == null)
+                            MaterialTheme.colorScheme.surfaceTint
+                            else Color.Black
+                    )
+
                     Icon(
                         Icons.AutoMirrored.Filled.List,
+                        tint = MaterialTheme.colorScheme.surfaceTint,
                         contentDescription = null,
                         modifier = Modifier.padding(start = 15.dp)
                     )
 
                     BasicTextField(
-                        value = "Descrição",
-                        onValueChange = {},
+                        value = text.value ?: "Descrição",
+                        onValueChange = { it -> text.value = it },
                         singleLine = true,
-                        textStyle = MaterialTheme.typography.bodyLarge,
+                        textStyle = textStyle,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(start = 20.dp)
                     )
                 }
 
-                HorizontalDivider(modifier = Modifier.padding(start = 20.dp, end = 20.dp))
+                HorizontalDivider(
+                    modifier = Modifier
+                        .padding(start = 20.dp, end = 20.dp)
+                        .background(MaterialTheme.colorScheme.surfaceTint)
+                )
 
                 Row(
                     horizontalArrangement = Arrangement.Start,
@@ -122,6 +153,7 @@ fun TransactionAddPage(navHostController: NavHostController) {
 
                     Icon(
                         painter = painterResource(id = R.drawable.ic_attach_money),
+                        tint = MaterialTheme.colorScheme.surfaceTint,
                         contentDescription = null,
                         modifier = Modifier.padding(start = 15.dp)
                     )
@@ -130,12 +162,7 @@ fun TransactionAddPage(navHostController: NavHostController) {
                         text = "Receita",
                         selected = selectedChip == TransactionType.Receita,
                         onClick = { selectedChip = TransactionType.Receita },
-                        icon = {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_trending_up),
-                                contentDescription = null
-                            )
-                        },
+                        painter = painterResource(id = R.drawable.ic_trending_up),
                         modifier = Modifier.padding(start = 20.dp)
                     )
 
@@ -145,16 +172,15 @@ fun TransactionAddPage(navHostController: NavHostController) {
                         text = "Dívida",
                         selected = selectedChip == TransactionType.Despesa,
                         onClick = { selectedChip = TransactionType.Despesa },
-                        icon = {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_trending_down),
-                                contentDescription = null
-                            )
-                        }
+                        painter = painterResource(id = R.drawable.ic_trending_down)
                     )
                 }
 
-                HorizontalDivider(modifier = Modifier.padding(start = 20.dp, end = 20.dp))
+                HorizontalDivider(
+                    modifier = Modifier
+                        .padding(start = 20.dp, end = 20.dp)
+                        .background(MaterialTheme.colorScheme.surfaceTint)
+                )
 
                 Column(
                     verticalArrangement = Arrangement.Bottom,

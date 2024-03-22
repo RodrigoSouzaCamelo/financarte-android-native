@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -38,22 +40,29 @@ import br.com.rodrigo.financarte.ui.theme.FinancarteTheme
 
 @Composable
 fun HomePage(navHostController: NavHostController) {
-    Header()
-
     Column(
-        modifier = Modifier, verticalArrangement = Arrangement.spacedBy(16.dp)
+        modifier = Modifier.fillMaxSize()
     ) {
-        AccountBalanceCard()
-        Text(
-            text = "Transações",
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier
-                .padding(start = 16.dp, top = 16.dp)
-        )
+        Header()
 
-        TransactionCard()
-        TransactionCard()
-        TransactionCard()
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier
+                .background(MaterialTheme.colorScheme.background)
+                .offset(y = (-100).dp)
+        ) {
+            AccountBalanceCard()
+            Text(
+                text = "Transações",
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .padding(start = 16.dp, top = 16.dp)
+            )
+
+            TransactionCard()
+            TransactionCard()
+            TransactionCard()
+        }
     }
 }
 
@@ -62,7 +71,7 @@ fun Header() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(75.dp)
+            .height(125.dp)
             .background(MaterialTheme.colorScheme.primary)
     )
 }
@@ -72,8 +81,8 @@ fun AccountBalanceCard() {
     Card(
         shape = RoundedCornerShape(8.dp),
         modifier = Modifier
-            .height(180.dp)
-            .padding(horizontal = 16.dp)
+            .height(190.dp)
+            .padding(start = 16.dp, end = 16.dp)
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
             Column(
@@ -152,7 +161,7 @@ fun AccountBalanceCard() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-            )  {
+            ) {
                 Column(
                     verticalArrangement = Arrangement.Center,
                     modifier = Modifier.fillMaxHeight()

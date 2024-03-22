@@ -8,7 +8,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,25 +23,31 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun BottomNavigationActionItem(icon: ImageVector, onClick: () -> Unit) {
-    Row(
-        horizontalArrangement = Arrangement.Center,
+    Card(
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 8.dp
+        ),
         modifier = Modifier
             .offset(y = (-20).dp)
+            .clip(CircleShape)
     ) {
-        Box(
-            modifier = Modifier
-                .size(50.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.primary)
-                .clickable { onClick() },
-            contentAlignment = Alignment.Center
+        Row(
+            horizontalArrangement = Arrangement.Center
         ) {
-            Icon(
-                icon,
-                contentDescription = null,
-                modifier = Modifier.size(30.dp),
-                tint = Color.LightGray
-            )
+            IconButton(
+                onClick = { onClick() },
+                modifier = Modifier
+                    .size(50.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.primary)
+            ) {
+                Icon(
+                    icon,
+                    contentDescription = null,
+                    modifier = Modifier.size(30.dp),
+                    tint = MaterialTheme.colorScheme.secondaryContainer
+                )
+            }
         }
     }
 }
